@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails HPMarketplace: production" uuid="7aa246ea-9586-483a-bdb7-c468d4945d77">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>&lt;%= ENV['RDS_USERNAME'] %&gt;</user-name>
+    </data-source>
+    <data-source name="Rails HPMarketplace: development" uuid="6455b9da-2955-48f3-b394-d475261604e2">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="Rails HPMarketplace: default" uuid="1caf20a2-604b-4e8f-b59a-edeb86a4930b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
