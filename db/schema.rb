@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_092357) do
+ActiveRecord::Schema.define(version: 2018_07_12_083910) do
 
-  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "adress1"
     t.string "adress2"
@@ -24,10 +24,119 @@ ActiveRecord::Schema.define(version: 2018_07_11_092357) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "main_objects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "adress1"
+    t.string "adress2"
+    t.string "zipcode"
+    t.string "city"
+    t.string "reference"
+    t.string "access_code"
+    t.integer "appt_number"
+    t.float "surface_area"
+    t.bigint "object_type_id"
+    t.bigint "tenant_or_owner_id"
+    t.bigint "pro_in_charge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["object_type_id"], name: "index_main_objects_on_object_type_id"
+    t.index ["pro_in_charge_id"], name: "index_main_objects_on_pro_in_charge_id"
+    t.index ["tenant_or_owner_id"], name: "index_main_objects_on_tenant_or_owner_id"
+  end
+
+  create_table "missions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "sub_title"
+    t.text "description"
+    t.date "start_date"
+    t.date "finish_date"
+    t.date "deadline_date"
+    t.bigint "main_object_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["main_object_id"], name: "index_missions_on_main_object_id"
+    t.index ["user_id"], name: "index_missions_on_user_id"
+  end
+
+  create_table "object_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "quotations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "quantity"
+    t.float "cost"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_quotations_on_task_id"
+  end
+
+  create_table "task_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_sub_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "task_categories_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_categories_id"], name: "index_task_sub_categories_on_task_categories_id"
+  end
+
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "task_category_id"
+    t.bigint "task_sub_category_id"
+    t.text "description"
+    t.date "start_date"
+    t.date "finish_date"
+    t.date "deadline_date"
+    t.bigint "mission_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_tasks_on_mission_id"
+    t.index ["task_category_id"], name: "index_tasks_on_task_category_id"
+    t.index ["task_sub_category_id"], name: "index_tasks_on_task_sub_category_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "mobile"
+    t.string "email"
+    t.string "login"
+    t.string "password"
+    t.bigint "company_id"
+    t.bigint "user_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["user_type_id"], name: "index_users_on_user_type_id"
+  end
+
+  add_foreign_key "main_objects", "object_types"
+  add_foreign_key "missions", "main_objects"
+  add_foreign_key "missions", "users"
+  add_foreign_key "quotations", "tasks"
+  add_foreign_key "task_sub_categories", "task_categories", column: "task_categories_id"
+  add_foreign_key "tasks", "missions"
+  add_foreign_key "tasks", "task_categories"
+  add_foreign_key "tasks", "task_sub_categories"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "user_types"
 end

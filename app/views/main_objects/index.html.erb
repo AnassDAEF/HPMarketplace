@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Main Objects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Adress1</th>
+      <th>Adress2</th>
+      <th>Zipcode</th>
+      <th>City</th>
+      <th>Reference</th>
+      <th>Access code</th>
+      <th>Appt number</th>
+      <th>Surface area</th>
+      <th>Object type</th>
+      <th>Tenant or owner</th>
+      <th>Pro in charge</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @main_objects.each do |main_object| %>
+      <tr>
+        <td><%= main_object.adress1 %></td>
+        <td><%= main_object.adress2 %></td>
+        <td><%= main_object.zipcode %></td>
+        <td><%= main_object.city %></td>
+        <td><%= main_object.reference %></td>
+        <td><%= main_object.access_code %></td>
+        <td><%= main_object.appt_number %></td>
+        <td><%= main_object.surface_area %></td>
+        <td><%= main_object.object_type %></td>
+        <td><%= main_object.tenant_or_owner %></td>
+        <td><%= main_object.pro_in_charge %></td>
+        <td><%= link_to 'Show', main_object %></td>
+        <td><%= link_to 'Edit', edit_main_object_path(main_object) %></td>
+        <td><%= link_to 'Destroy', main_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Main Object', new_main_object_path %>

@@ -1,0 +1,2 @@
+module MainObjectsHelper
+end

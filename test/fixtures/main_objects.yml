@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adress1: MyString
+  adress2: MyString
+  zipcode: MyString
+  city: MyString
+  reference: MyString
+  access_code: MyString
+  appt_number: 1
+  surface_area: 
+  object_type: one
+  tenant_or_owner: one
+  pro_in_charge: one
+
+two:
+  adress1: MyString
+  adress2: MyString
+  zipcode: MyString
+  city: MyString
+  reference: MyString
+  access_code: MyString
+  appt_number: 1
+  surface_area: 
+  object_type: two
+  tenant_or_owner: two
+  pro_in_charge: two

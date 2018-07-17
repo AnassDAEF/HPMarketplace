@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @mission.title %>
+</p>
+
+<p>
+  <strong>Sub title:</strong>
+  <%= @mission.sub_title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @mission.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @mission.start_date %>
+</p>
+
+<p>
+  <strong>Finish date:</strong>
+  <%= @mission.finish_date %>
+</p>
+
+<p>
+  <strong>Deadline date:</strong>
+  <%= @mission.deadline_date %>
+</p>
+
+<p>
+  <strong>Id object:</strong>
+  <%= @mission.id_object %>
+</p>
+
+<p>
+  <strong>Id user:</strong>
+  <%= @mission.id_user %>
+</p>
+
+<%= link_to 'Edit', edit_mission_path(@mission) %> |
+<%= link_to 'Back', missions_path %>

@@ -1,0 +1,72 @@
+<%= form_with(model: main_object, local: true) do |form| %>
+  <% if main_object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(main_object.errors.count, "error") %> prohibited this main_object from being saved:</h2>
+
+      <ul>
+      <% main_object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :adress1 %>
+    <%= form.text_field :adress1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adress2 %>
+    <%= form.text_field :adress2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference %>
+    <%= form.text_field :reference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :access_code %>
+    <%= form.text_field :access_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appt_number %>
+    <%= form.number_field :appt_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surface_area %>
+    <%= form.text_field :surface_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :object_type_id %>
+    <%= form.text_field :object_type_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_or_owner_id %>
+    <%= form.text_field :tenant_or_owner_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pro_in_charge_id %>
+    <%= form.text_field :pro_in_charge_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

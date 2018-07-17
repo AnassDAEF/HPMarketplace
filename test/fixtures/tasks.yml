@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_category: one
+  task_sub_category: one
+  description: MyText
+  start_date: 2018-07-12
+  finish_date: 2018-07-12
+  deadline_date: 2018-07-12
+  mission: one
+  user: one
+
+two:
+  task_category: two
+  task_sub_category: two
+  description: MyText
+  start_date: 2018-07-12
+  finish_date: 2018-07-12
+  deadline_date: 2018-07-12
+  mission: two
+  user: two

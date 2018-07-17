@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  sub_title: MyString
+  description: MyText
+  start_date: 2018-07-12
+  finish_date: 2018-07-12
+  deadline_date: 2018-07-12
+  id_object: one
+  id_user: one
+
+two:
+  title: MyString
+  sub_title: MyString
+  description: MyText
+  start_date: 2018-07-12
+  finish_date: 2018-07-12
+  deadline_date: 2018-07-12
+  id_object: two
+  id_user: two
